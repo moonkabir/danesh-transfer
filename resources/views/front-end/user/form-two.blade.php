@@ -18,7 +18,7 @@
                     <h2><strong>Customer Information</strong></h2>
                     <div class="row">
                         <div class="col-md-12 mx-0">
-                            <form id="regform" action="{{url('/form-two')}}" method="post" enctype="multipart/form-data">
+                            <form id="regform" action="{{url('/information-register')}}" method="post" enctype="multipart/form-data">
                                 @csrf
                                 <fieldset>
                                     <div class="form-card">

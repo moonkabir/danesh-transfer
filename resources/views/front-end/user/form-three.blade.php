@@ -26,7 +26,7 @@
                     @endif
                     <div class="row">
                         <div class="col-md-12 mx-0">
-                            <form id="regform" action="{{url('/form-three')}}" method="post" enctype="multipart/form-data">
+                            <form id="regform" action="{{url('/id-register')}}" method="post" enctype="multipart/form-data">
                                 @csrf
                                 <fieldset>
                                     <div class="form-card">

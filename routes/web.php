@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserRegistrationController;
+use App\Http\Controllers\UserDashboard;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,22 +15,32 @@ use App\Http\Controllers\UserRegistrationController;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/', function () {
+    return view('auth.login');
+});
+Route::get('/dashboard',[UserDashboard::class, 'Dashboard'])
+->middleware(['auth'])
+->name('dashboard');
 
-// ------------------user registration-------------------
-Route::get('/', [UserRegistrationController::class, 'login']);
-Route::get('/registration', [UserRegistrationController::class, 'registration']);
+Route::get('/information-register',[UserRegistrationController::class, 'information_register'])
+->middleware(['auth'])
+->name('information-register');
+Route::post('/information-register',[UserRegistrationController::class, 'information_register_post'])
+->middleware(['auth'])
+->name('information-register');
 
-Route::get('/account-register', [UserRegistrationController::class, 'form_one']);
-Route::post('/form-one', [UserRegistrationController::class, 'form_one_post']);
+Route::get('/id-register',[UserRegistrationController::class, 'id_register'])
+->middleware(['auth'])
+->name('id-register');
+Route::post('/id-register',[UserRegistrationController::class, 'id_register_post'])
+->middleware(['auth'])
+->name('id-register');
 
-Route::get('/form-two', [UserRegistrationController::class, 'form_two']);
-Route::post('/form-two', [UserRegistrationController::class, 'form_two_post']);
+Route::get('/upload-id',[UserRegistrationController::class, 'upload_id'])
+->middleware(['auth'])
+->name('upload-id');
+Route::post('/upload-id',[UserRegistrationController::class, 'upload_id_post'])
+->middleware(['auth'])
+->name('upload-id');
 
-Route::get('/form-three', [UserRegistrationController::class, 'form_three']);
-Route::post('/form-three', [UserRegistrationController::class, 'form_three_post']);
-
-Route::get('/form-four', [UserRegistrationController::class, 'form_four']);
-Route::post('/form-four', [UserRegistrationController::class, 'form_four_post']);
+require __DIR__.'/auth.php';
