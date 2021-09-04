@@ -22,6 +22,10 @@ Route::get('/dashboard',[UserDashboard::class, 'Dashboard'])
 ->middleware(['auth'])
 ->name('dashboard');
 
+Route::get('/users',[UserDashboard::class, 'dashboard_all_users'])
+->middleware(['auth'])
+->name('users');
+
 Route::get('/information-register',[UserRegistrationController::class, 'information_register'])
 ->middleware(['auth'])
 ->name('information-register');

@@ -68,11 +68,7 @@ class UserRegistrationController extends Controller
         //     'phno_2' => ['regex:/^[0-9]+$/'],
         //     'address' => ['regex:/^[#.0-9a-zA-Z\s,-]+$/']
         // ]);
-
         $user_id = $request->post('id');
-        // $user_id = DB::table('users')->get(['id','name']);
-        // dd($user_id);
-
         $update = new userRegistration;
         if($user_id){
             $update->user_id  = $user_id;

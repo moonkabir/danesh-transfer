@@ -27,8 +27,8 @@
                                         <input type="text" name="fname" placeholder="First Name" required/>
                                         <input type="text" name="mname" placeholder="middle Name" />
                                         <input type="text" name="lname" placeholder="Last Name" required/>
-                                        <input type="text" name="phno" placeholder="Phone No." required/>
-                                        <input type="text" name="phno_2" placeholder="Alternate Phone No." />
+                                        <input type="number" name="phno" placeholder="Phone No." required/>
+                                        <input type="number" name="phno_2" placeholder="Alternate Phone No." />
                                         <input type="text" name="address" placeholder="Address" />
                                         <input type="hidden" name="id" value="{{Session::get("id")}}" />
                                     </div>
