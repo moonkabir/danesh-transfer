@@ -33,7 +33,11 @@
             <i class="fas fa-expand-arrows-alt"></i>
             </a>
         </li>
-        <li class="nav-item"><a class="nav-link" data-widget="fullscreen" href="#" role="button">{{Auth::user()->name }} img</a></li>
-        <li class="nav-item"><a class="nav-link" data-widget="fullscreen" href="#" role="button">{{Auth::user()->name }}</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">{{Auth::user()->name }} img</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">{{Auth::user()->name }}</a></li>
+        <form method="POST" action="{{ route('logout') }}">
+            @csrf
+            <a  class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();this.closest('form').submit();">Log Out</a>
+        </form>
     </ul>
 </nav>
