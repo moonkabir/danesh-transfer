@@ -30,16 +30,22 @@ class UserDashboard extends Controller
     }
     public function dashboard_all_users(){
         $result['users'] = DB::table('users')
-            ->leftJoin('user_registrations', 'users.id', '=', 'user_registrations.user_id')
+            ->rightJoin('user_registrations', 'users.id', '=', 'user_registrations.user_id')
             ->get();
         return view('admin.users.users', $result);
     }
     public function user_details($id){
         $result['user'] = DB::table('users')
-            ->leftJoin('user_registrations', 'users.id', '=', 'user_registrations.user_id')
+            ->rightJoin('user_registrations', 'users.id', '=', 'user_registrations.user_id')
             ->where('user_id', $id)
             ->get();
             // dd($result);
         return view('admin.users.user-details', $result);
+    }
+    public function user_delete($id){
+        DB::table('users')->where('id', $id)->delete();
+        DB::table('user_registrations')->where('user_id', $id)->delete();
+            // dd($result);
+        return back()->with('message', 'User Deleted Successfully');
     }
 }

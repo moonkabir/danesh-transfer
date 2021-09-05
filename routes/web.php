@@ -25,7 +25,11 @@ Route::get('/dashboard',[UserDashboard::class, 'Dashboard'])
 Route::get('/users',[UserDashboard::class, 'dashboard_all_users'])
 ->middleware(['auth'])
 ->name('users');
-Route::get('/user/{id}',[UserDashboard::class, 'user_details'])
+Route::get('/user-details/{id}',[UserDashboard::class, 'user_details'])
+->middleware(['auth']);
+Route::get('/user-edit/{id}',[UserDashboard::class, 'user_edit'])
+->middleware(['auth']);
+Route::get('/user-delete/{id}',[UserDashboard::class, 'user_delete'])
 ->middleware(['auth']);
 
 // --------user registration---------

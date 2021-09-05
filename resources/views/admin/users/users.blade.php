@@ -27,16 +27,17 @@
                 <tbody>
                     @foreach($users as $user)
                     @if($user->admin == 0)
+                    {{-- {{dd($user)}} --}}
                     <tr>
-                        <td>{{$user->id}}</td>
+                        <td>{{$user->user_id}}</td>
                         <td>{{$user->name}}</td>
                         <td>{{$user->email}}</td>
                         <td>{{$user->phno}}</td>
                         <td>{{$user->id_type}}</td>
                         <td>
-                            <a href="/user/{{$user->id}}"><i class="fas fa-eye"></i></a>&nbsp|&nbsp
-                            <a href="/user/{{$user->id}}"><i class="fas fa-edit"></i></a>&nbsp|
-                            <a href="/user/{{$user->id}}"><i class="fas fa-trash-alt"></i></a>
+                            <a href="/user-details/{{$user->user_id}}"><i class="fas fa-eye"></i></a>&nbsp|&nbsp
+                            <a href="/user-edit/{{$user->user_id}}"><i class="fas fa-edit"></i></a>&nbsp|
+                            <a href="/user-delete/{{$user->user_id}}"><i class="fas fa-trash-alt"></i></a>
                         </td>
                     </tr>
                     @endif
