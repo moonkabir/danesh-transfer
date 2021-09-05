@@ -21,11 +21,14 @@ Route::get('/', function () {
 Route::get('/dashboard',[UserDashboard::class, 'Dashboard'])
 ->middleware(['auth'])
 ->name('dashboard');
-
+// --------admin panel users list---------
 Route::get('/users',[UserDashboard::class, 'dashboard_all_users'])
 ->middleware(['auth'])
 ->name('users');
+Route::get('/user/{id}',[UserDashboard::class, 'user_details'])
+->middleware(['auth']);
 
+// --------user registration---------
 Route::get('/information-register',[UserRegistrationController::class, 'information_register'])
 ->middleware(['auth'])
 ->name('information-register');

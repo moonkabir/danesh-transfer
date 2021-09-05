@@ -1,43 +1,4 @@
 $(document).ready(function () {
-    var current_fs, next_fs, previous_fs; //fieldsets
-    var opacity;
-    $(".previous").click(function () {
-        current_fs = $(this).parent();
-        previous_fs = $(this).parent().prev();
-
-        //Remove class active
-        $("#progressbar li")
-            .eq($("fieldset").index(current_fs))
-            .removeClass("active");
-
-        //show the previous fieldset
-        previous_fs.show();
-
-        //hide the current fieldset with style
-        current_fs.animate(
-            { opacity: 0 },
-            {
-                step: function (now) {
-                    // for making fielset appear animation
-                    opacity = 1 - now;
-
-                    current_fs.css({
-                        display: "none",
-                        position: "relative",
-                    });
-                    previous_fs.css({ opacity: opacity });
-                },
-                duration: 600,
-            }
-        );
-    });
-    $(".radio-group .radio").click(function () {
-        $(this).parent().find(".radio").removeClass("selected");
-        $(this).addClass("selected");
-    });
-    $(".submit").click(function () {
-        return false;
-    });
     $(function () {
         $(".aus_driver_lic,.passport").hide();
         $("#id_type").change(function () {
@@ -52,63 +13,71 @@ $(document).ready(function () {
             }
         });
     });
-    $("#first_button").click(function() {
-        var form = $("#regform");
-        if (form.valid() === true ) {
-            if($("#email").val() != $("#cemail").val()){
-                $(".error-email").show();
-            }else if ($("#password").val() != $("#c_password").val()) {
-                $(".error-password").show();
-            }else{
-                $(".next").click(function () {
-                    current_fs = $(this).parent();
-                    next_fs = $(this).parent().next();
-                    $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
-                    next_fs.show();
-                    current_fs.animate(
-                        { opacity: 0 },
-                        {
-                            step: function (now) {
-                                opacity = 1 - now;
-                                current_fs.css({
-                                    display: "none",
-                                    position: "relative",
-                                });
-                                next_fs.css({ opacity: opacity });
-                            },
-                            duration: 600,
-                        }
-                    );
-                });
-            }
-        }
+    // validate signup form on keyup and submit
+    $("#regform_two").validate({
+        rules: {
+            sender_id: {
+                required: true
+            },
+            fname: {
+                required: true,
+                minlength: 3,
+            },
+            lname: {
+                required: true,
+                minlength: 3,
+            },
+            phno: {
+                required: true,
+                digits: true,
+            },
+            phno_2: {
+                digits: true,
+            },
+            address: {
+                required: true,
+            },
+        },
+        messages: {
+            sender_id: {
+                required: "Sender ID is required",
+            },
+            fname: {
+                required: "Please enter a First Name",
+                minlength:"Your First Name must consist of at least 3 characters",
+            },
+            lname: {
+                required: "Please enter a Last Name",
+                minlength:"Your Last Name must consist of at least 3 characters",
+            },
+            phno: {
+                required: "Please enter Phone Number",
+                digits: "Please enter only digits.",
+            },
+            phno_2: {
+                digits: "Please enter only digits.",
+            },
+            address: {
+                digits: "Please enter your address.",
+            },
+        },
     });
-    $("#second_button").click(function () {
-        var form = $("#regform");
-        if (form.valid() === true) {
-            // $(".next").click(function () {
-            //     current_fs = $(this).parent();
-            //     next_fs = $(this).parent().next();
-            //     $("#progressbar li")
-            //         .eq($("fieldset").index(next_fs))
-            //         .addClass("active");
-            //     next_fs.show();
-            //     current_fs.animate(
-            //         { opacity: 0 },
-            //         {
-            //             step: function (now) {
-            //                 opacity = 1 - now;
-            //                 current_fs.css({
-            //                     display: "none",
-            //                     position: "relative",
-            //                 });
-            //                 next_fs.css({ opacity: opacity });
-            //             },
-            //             duration: 600,
-            //         }
-            //     );
-            // });
-        }
-    });
-
+    // $("#user_submit_three").validate({
+    //     rules: {
+    //         bdate: {
+    //             required: true,
+    //             minAge: 13,
+    //         },
+    //     },
+    //     messages: {
+    //         bdate: {
+    //             required: "Please enter you date of birth.",
+    //             minAge: "You must be at least 13 years old!",
+    //         },
+    //     },
+    // });
+    $("#user_submit_four").click(function () {});
+    // $(".datepicker").datepicker({
+    //     startDate: "+3d",
+    // });
 });

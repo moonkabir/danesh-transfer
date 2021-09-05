@@ -26,20 +26,20 @@
                     @endif
                     <div class="row">
                         <div class="col-md-12 mx-0">
-                            <form id="regform" action="{{url('/id-register')}}" method="post" enctype="multipart/form-data">
+                            <form id="regform" class="regform" action="{{url('/id-register')}}" method="post" enctype="multipart/form-data">
                                 @csrf
                                 <fieldset>
                                     <div class="form-card">
-                                        <label>Birth Date</label>
-                                        <input type="date" name="bdate"/>
+                                        <label for="bdate">Birth Date</label>
+                                        <input id="bdate" type="date" name="bdate"/>
                                         <select name="id_type" id="id_type">
                                             <option>Select ID type</option>
                                             <option value="aus_driver_lic">Australia Driver License</option>
                                             <option value="passport">Passport</option>
                                         </select>
                                         <div class="aus_driver_lic">
-                                            <input type="text" name="aus_driver_id_number" placeholder="Australia Driver License ID Number" />
-                                            <input type="text" name="c_aus_driver_id_number" placeholder="Australia Driver ID number confirm"/>
+                                            <input type="number" name="aus_driver_id_number" placeholder="Australia Driver License ID Number" />
+                                            <input type="number" name="c_aus_driver_id_number" placeholder="Australia Driver ID number confirm"/>
                                             <label>Select Passport Issuing jurisdictions</label>
                                             <select name="aus_driver_issuing_jurisdictions">
                                                 <option value="VIC">VIC</option>
@@ -55,8 +55,8 @@
                                             <input type="date" name="aus_driver_expiry"/>
                                         </div>
                                         <div class="passport">
-                                            <input type="text" name="passport_no" placeholder="Passport Number" />
-                                            <input type="text" name="c_passport_no" placeholder="Confirm Passport number" />
+                                            <input type="number" name="passport_no" placeholder="Passport Number" />
+                                            <input type="number" name="c_passport_no" placeholder="Confirm Passport number" />
                                             <label>Passport Issuing date</label>
                                             <input type="date" name="passport_issuing_date"/>
                                             <label>Select Passport Issuing jurisdictions</label>
@@ -75,22 +75,22 @@
                                         </div>
                                         <label>Occupation</label>
                                         <select name="occupation">
-                                            <option value="VIC">Job</option>
-                                            <option value="NSW">Student</option>
+                                            <option value="Job">Job</option>
+                                            <option value="Student">Student</option>
                                         </select>
                                         <label>Country of Birth</label>
                                         <select name="country_of_birth">
-                                            <option value="VIC">Bangladesh</option>
-                                            <option value="NSW">Pakistan</option>
+                                            <option value="Bangladesh">Bangladesh</option>
+                                            <option value="Pakistan">Pakistan</option>
                                         </select>
                                         <label>Nationality</label>
                                         <select name="Nationality">
-                                            <option value="VIC">Bangladeshi</option>
-                                            <option value="NSW">Pakistani</option>
+                                            <option value="Bangladeshi">Bangladeshi</option>
+                                            <option value="Pakistani">Pakistani</option>
                                         </select>
                                     </div>
                                     <input type="hidden" name="id" value="{{Session::get("id")}}" />
-                                    <input type="submit" name="submit" class="next action-button" value="Submit" />
+                                    <input id="user_submit_three" type="submit" name="submit" class="next action-button" value="Submit" />
                                 </fieldset>
                             </form>
                         </div>
@@ -101,6 +101,7 @@
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+    <script src="{{asset("assets/front-end/js/jquery.validate.min.js")}}"></script>
     <script src="{{asset("assets/front-end/js/main.js")}}"></script>
 </body>
 </html>

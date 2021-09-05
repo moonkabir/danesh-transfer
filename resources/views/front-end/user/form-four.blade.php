@@ -18,7 +18,7 @@
                     <h2><strong>Upload ID</strong></h2>
                     <div class="row">
                         <div class="col-md-12 mx-0">
-                            <form id="regform" action="{{url('/upload-id')}}" method="POST" enctype="multipart/form-data">
+                            <form id="regform" class="regform" action="{{url('/upload-id')}}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <fieldset>
                                     <div class="form-card">
@@ -38,7 +38,7 @@
                                         <input type="hidden" name="id" value="{{Session::get("id")}}" />
                                         <input type="hidden" name="id_type" value="{{Session::get("id_type")}}" />
                                     </div>
-                                    <input type="submit" name="submit" class="next action-button" value="Submit" />
+                                    <input id="user_submit_four" type="submit" name="submit" class="next action-button" value="Submit" />
                                 </fieldset>
                             </form>
                         </div>

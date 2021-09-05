@@ -18,21 +18,27 @@
                     <h2><strong>Customer Information</strong></h2>
                     <div class="row">
                         <div class="col-md-12 mx-0">
-                            <form id="regform" action="{{url('/information-register')}}" method="post" enctype="multipart/form-data">
+                            <form id="regform_two" class="regform" action="{{url('/information-register')}}" method="post" enctype="multipart/form-data">
                                 @csrf
                                 <fieldset>
                                     <div class="form-card">
-                                        <input type="text" name="sender_id" value="CUS-00001" readonly="readonly"/>
-                                        <input type="text" name="title" placeholder="MR/MRS/MS" />
-                                        <input type="text" name="fname" placeholder="First Name" required/>
-                                        <input type="text" name="mname" placeholder="middle Name" />
-                                        <input type="text" name="lname" placeholder="Last Name" required/>
-                                        <input type="number" name="phno" placeholder="Phone No." required/>
-                                        <input type="number" name="phno_2" placeholder="Alternate Phone No." />
-                                        <input type="text" name="address" placeholder="Address" />
+                                        <input id="sender_id" type="text" name="sender_id" value="CUS-00001" readonly="readonly"/>
+                                        {{-- <input id="title" type="text" name="title" placeholder="MR/MRS/MS" /> --}}
+                                        <select name="title" id="title">
+                                            <option>Select your title</option>
+                                            <option value="MR">MR</option>
+                                            <option value="MRS">MRS</option>
+                                            <option value="MS">MS</option>
+                                        </select>
+                                        <input id="fname" type="text" name="fname" placeholder="First Name" required/>
+                                        <input id="mname" type="text" name="mname" placeholder="middle Name" />
+                                        <input id="lname" type="text" name="lname" placeholder="Last Name" required/>
+                                        <input id="phno" type="number" name="phno" placeholder="Phone No." required/>
+                                        <input id="phno_2" type="number" name="phno_2" placeholder="Alternate Phone No." />
+                                        <input id="address" type="text" name="address" placeholder="Address" required/>
                                         <input type="hidden" name="id" value="{{Session::get("id")}}" />
                                     </div>
-                                    <input type="submit" name="submit" class="next action-button" value="Submit" />
+                                    <input id="user_submit_two" type="submit" name="submit" class="next action-button" value="Submit" />
                                 </fieldset>
                             </form>
                         </div>
@@ -43,6 +49,7 @@
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+    <script src="{{asset("assets/front-end/js/jquery.validate.min.js")}}"></script>
     <script src="{{asset("assets/front-end/js/main.js")}}"></script>
 </body>
 </html>

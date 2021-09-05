@@ -26,6 +26,7 @@
                 </thead>
                 <tbody>
                     @foreach($users as $user)
+                    @if($user->admin == 0)
                     <tr>
                         <td>{{$user->id}}</td>
                         <td>{{$user->name}}</td>
@@ -33,8 +34,12 @@
                         <td>{{$user->phno}}</td>
                         <td>{{$user->id_type}}</td>
                         <td>
-                            <a href="#"><i class="fas fa-edit"></i></a>|<a href="#"><i class="fas fa-trash-alt"></i></a></td>
+                            <a href="/user/{{$user->id}}"><i class="fas fa-eye"></i></a>&nbsp|&nbsp
+                            <a href="/user/{{$user->id}}"><i class="fas fa-edit"></i></a>&nbsp|
+                            <a href="/user/{{$user->id}}"><i class="fas fa-trash-alt"></i></a>
+                        </td>
                     </tr>
+                    @endif
                     @endforeach
                 </tbody>
                 <tfoot>

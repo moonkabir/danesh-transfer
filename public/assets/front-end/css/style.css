@@ -9,12 +9,24 @@ html {
     background-color: #9C27B0;
     background-image: linear-gradient(120deg, #FF4081, #81D4FA)
 }
-#regform {
+.regform {
     text-align: center;
     position: relative;
     margin-top: 20px
 }
-#regform fieldset .form-card {
+/* number field icon hide */
+/* Chrome, Safari, Edge, Opera*/
+.regform input::-webkit-outer-spin-button,
+.regform input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+/* Firefox */
+.regform input[type=number] {
+    -moz-appearance: textfield;
+}
+
+.regform fieldset .form-card {
     background: white;
     border: 0 none;
     border-radius: 0px;
@@ -25,7 +37,7 @@ html {
     margin: 0 3% 20px 3%;
     position: relative
 }
-#regform fieldset {
+.regform fieldset {
     background: white;
     border: 0 none;
     border-radius: 0.5rem;
@@ -35,15 +47,15 @@ html {
     padding-bottom: 20px;
     position: relative
 }
-#regform fieldset:not(:first-of-type) {
+.regform fieldset:not(:first-of-type) {
     display: none
 }
-#regform fieldset .form-card {
+.regform fieldset .form-card {
     text-align: left;
     color: #9E9E9E
 }
-#regform input,
-#regform textarea {
+.regform input,
+.regform textarea {
     padding: 0px 8px 4px 8px;
     border: none;
     border-bottom: 1px solid #ccc;
@@ -57,8 +69,8 @@ html {
     font-size: 16px;
     letter-spacing: 1px;
 }
-#regform input:focus,
-#regform textarea:focus {
+.regform input:focus,
+.regform textarea:focus {
     -moz-box-shadow: none !important;
     -webkit-box-shadow: none !important;
     box-shadow: none !important;
@@ -67,7 +79,7 @@ html {
     border-bottom: 2px solid skyblue;
     outline-width: 0
 }
-#regform .action-button {
+.regform .action-button {
     width: 100px;
     background: black;
     font-weight: bold;
@@ -78,11 +90,11 @@ html {
     padding: 10px 5px;
     margin: 10px 5px
 }
-#regform .action-button:hover,
-#regform .action-button:focus {
+.regform .action-button:hover,
+.regform .action-button:focus {
     box-shadow: 0 0 0 2px white, 0 0 0 3px black;
 }
-#regform .action-button-previous {
+.regform .action-button-previous {
     width: 100px;
     background: #616161;
     font-weight: bold;
@@ -93,8 +105,8 @@ html {
     padding: 10px 5px;
     margin: 10px 5px
 }
-#regform .action-button-previous:hover,
-#regform .action-button-previous:focus {
+.regform .action-button-previous:hover,
+.regform .action-button-previous:focus {
     box-shadow: 0 0 0 2px white, 0 0 0 3px #616161
 }
 select.list-dt {

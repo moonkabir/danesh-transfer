@@ -34,4 +34,12 @@ class UserDashboard extends Controller
             ->get();
         return view('admin.users.users', $result);
     }
+    public function user_details($id){
+        $result['user'] = DB::table('users')
+            ->leftJoin('user_registrations', 'users.id', '=', 'user_registrations.user_id')
+            ->where('user_id', $id)
+            ->get();
+            // dd($result);
+        return view('admin.users.user-details', $result);
+    }
 }
