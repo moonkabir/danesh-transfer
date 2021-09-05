@@ -9,23 +9,21 @@ use Illuminate\Support\Facades\Auth;
 class UserDashboard extends Controller
 {
     public function dashboard(){
-        // $user_data = DB::table('users')->all();
         $user_table_id = Auth ::user()->id;
-        $is_admin = Auth ::user()->admin;
-        if($is_admin == 1){
+        $result['user'] = DB::table('users')
+            ->rightJoin('user_registrations', 'users.id', '=', 'user_registrations.user_id')
+            ->where('user_id', $user_table_id)
+            ->get();
+        // dd($result);
+        return view('dashboard', $result);
+    }
+    public function Admin_Dashboard(){
+        $is_admin = Auth::user()->admin;
+        if ($is_admin == 1) {
             $result['user'] = DB::table('users');
-                // ->leftJoin('user_registrations', 'users.id', '=', 'user_registrations.user_id')
-                // ->where('user_id', $user_table_id)
-                // ->get();
-            // dd($user);
             return view('admin.dashboard.dashboard', $result);
-        }else{
-            $result['user'] = DB::table('users')
-                ->leftJoin('user_registrations', 'users.id', '=', 'user_registrations.user_id')
-                ->where('user_id', $user_table_id)
-                ->get();
-            // dd($user);
-            return view('dashboard', $result);
+        } else {
+            return view('auth.login');
         }
     }
     public function dashboard_all_users(){
@@ -39,13 +37,26 @@ class UserDashboard extends Controller
             ->rightJoin('user_registrations', 'users.id', '=', 'user_registrations.user_id')
             ->where('user_id', $id)
             ->get();
-            // dd($result);
         return view('admin.users.user-details', $result);
     }
     public function user_delete($id){
         DB::table('users')->where('id', $id)->delete();
         DB::table('user_registrations')->where('user_id', $id)->delete();
-            // dd($result);
         return back()->with('message', 'User Deleted Successfully');
+    }
+    public function user_edit($id){
+        $result['user'] = DB::table('users')
+            ->rightJoin('user_registrations', 'users.id', '=', 'user_registrations.user_id')
+            ->where('user_id', $id)
+            ->get();
+            // dd($result);
+        return view('admin.users.user-edit', $result);
+    }
+    public function user_edit_action($id){
+        $result['user'] = DB::table('users')
+            ->rightJoin('user_registrations', 'users.id', '=', 'user_registrations.user_id')
+            ->where('user_id', $id)
+            ->get();
+        return view('admin.users.user-edit', $result);
     }
 }

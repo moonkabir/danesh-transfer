@@ -15,8 +15,7 @@ class AuthenticatedSessionController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function create()
-    {
+    public function create(){
         return view('auth.login');
     }
 
@@ -26,14 +25,27 @@ class AuthenticatedSessionController extends Controller
      * @param  \App\Http\Requests\Auth\LoginRequest  $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(LoginRequest $request)
-    {
+    public function store(LoginRequest $request){
         $request->authenticate();
 
         $request->session()->regenerate();
 
         return redirect()->intended(RouteServiceProvider::HOME);
     }
+
+
+    // ------------ admin login ----------------
+    public function admin_create(){
+        return view('auth.admin-login');
+    }
+    public function admin_store(LoginRequest $request){
+        $request->authenticate();
+
+        $request->session()->regenerate();
+
+        return redirect()->intended(RouteServiceProvider::ADMIN_HOME);
+    }
+
 
     /**
      * Destroy an authenticated session.

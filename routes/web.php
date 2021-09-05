@@ -18,18 +18,25 @@ use App\Http\Controllers\UserDashboard;
 Route::get('/', function () {
     return view('auth.login');
 });
+
+Route::get('/admin/dashboard', [UserDashboard::class, 'Admin_Dashboard'])
+->middleware(['auth']);
+
 Route::get('/dashboard',[UserDashboard::class, 'Dashboard'])
 ->middleware(['auth'])
 ->name('dashboard');
+
 // --------admin panel users list---------
-Route::get('/users',[UserDashboard::class, 'dashboard_all_users'])
+Route::get('/admin/users',[UserDashboard::class, 'dashboard_all_users'])
 ->middleware(['auth'])
 ->name('users');
-Route::get('/user-details/{id}',[UserDashboard::class, 'user_details'])
+Route::get('/admin/user-details/{id}',[UserDashboard::class, 'user_details'])
 ->middleware(['auth']);
-Route::get('/user-edit/{id}',[UserDashboard::class, 'user_edit'])
+Route::get('/admin/user-edit/{id}',[UserDashboard::class, 'user_edit'])
 ->middleware(['auth']);
-Route::get('/user-delete/{id}',[UserDashboard::class, 'user_delete'])
+Route::post('/admin/user-edit/{id}',[UserDashboard::class, 'user_edit_action'])
+->middleware(['auth']);
+Route::get('/admin/user-delete/{id}',[UserDashboard::class, 'user_delete'])
 ->middleware(['auth']);
 
 // --------user registration---------
