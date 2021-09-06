@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserRegistrationController;
 use App\Http\Controllers\UserDashboard;
+use App\Http\Controllers\ReceiverController;
 
 /*
 |--------------------------------------------------------------------------
@@ -60,5 +61,21 @@ Route::get('/upload-id',[UserRegistrationController::class, 'upload_id'])
 Route::post('/upload-id',[UserRegistrationController::class, 'upload_id_post'])
 ->middleware(['auth'])
 ->name('upload-id');
+// ------------- user reciever---------
+Route::get('/user/receivers', [ReceiverController::class, 'all_receivers'])
+    ->middleware(['auth'])
+    ->name('receivers');
+Route::get('/user/create-receiver/', [ReceiverController::class, 'create_receiver'])
+    ->middleware(['auth']);
+Route::post('/user/create-receiver/', [ReceiverController::class, 'create_receiver_post'])
+    ->middleware(['auth']);
+Route::get('/user/receiver-update/{id}', [ReceiverController::class, 'receiver_update'])
+    ->middleware(['auth']);
+Route::post('/user/receiver-update/{id}', [ReceiverController::class, 'receiver_update_action'])
+    ->middleware(['auth']);
+Route::get('/user/receiver-delete/{id}', [ReceiverController::class, 'receiver_delete'])
+    ->middleware(['auth']);
+
+
 
 require __DIR__.'/auth.php';

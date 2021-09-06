@@ -15,12 +15,12 @@ class UserDashboard extends Controller
             ->where('user_id', $user_table_id)
             ->get();
         // dd($result);
-        return view('dashboard', $result);
+        return view('user.dashboard.dashboard', $result);
     }
     public function Admin_Dashboard(){
         $is_admin = Auth::user()->admin;
         if ($is_admin == 1) {
-            $result['user'] = DB::table('users');
+            $result['user'] = DB::table('users')->get();
             return view('admin.dashboard.dashboard', $result);
         } else {
             return view('auth.login');
