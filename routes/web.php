@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserRegistrationController;
 use App\Http\Controllers\UserDashboard;
 use App\Http\Controllers\ReceiverController;
+use App\Http\Controllers\CurrencyController;
+use App\Http\Controllers\CountryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,7 +41,34 @@ Route::post('/admin/user-edit/{id}',[UserDashboard::class, 'user_edit_action'])
 ->middleware(['auth']);
 Route::get('/admin/user-delete/{id}',[UserDashboard::class, 'user_delete'])
 ->middleware(['auth']);
-
+// ----------- admin panel country list------------
+Route::get('/admin/country', [CountryController::class, 'dashboard_all_country'])
+    ->middleware(['auth'])
+    ->name('country');
+Route::get('/admin/create-country/', [CountryController::class, 'create_country'])
+    ->middleware(['auth']);
+Route::post('/admin/create-country/', [CountryController::class, 'create_country_post'])
+    ->middleware(['auth']);
+Route::get('/admin/country-update/{id}', [CountryController::class, 'country_update'])
+    ->middleware(['auth']);
+Route::post('/admin/country-update/{id}', [CountryController::class, 'country_update_action'])
+    ->middleware(['auth']);
+Route::get('/admin/country-delete/{id}', [CountryController::class, 'country_delete'])
+    ->middleware(['auth']);
+// -----------admin panel currency list------------
+Route::get('/admin/currency', [CurrencyController::class, 'dashboard_all_currency'])
+    ->middleware(['auth'])
+    ->name('currency');
+Route::get('/admin/create-currency/', [CurrencyController::class, 'create_currency'])
+    ->middleware(['auth']);
+Route::post('/admin/create-currency/', [CurrencyController::class, 'create_currency_post'])
+    ->middleware(['auth']);
+Route::get('/admin/currency-update/{id}', [CurrencyController::class, 'currency_update'])
+    ->middleware(['auth']);
+Route::post('/admin/currency-update/{id}', [CurrencyController::class, 'currency_update_action'])
+    ->middleware(['auth']);
+Route::get('/admin/currency-delete/{id}', [CurrencyController::class, 'currency_delete'])
+    ->middleware(['auth']);
 // --------user registration---------
 Route::get('/information-register',[UserRegistrationController::class, 'information_register'])
 ->middleware(['auth'])

@@ -42,6 +42,16 @@
                             <i class="nav-icon fa fa-users"></i><p>Users</p>
                         </a>
                     </li>
+                    <li class="nav-item menu-open">
+                        <a href="{{url('/admin/country')}}" class="nav-link @yield('country_menu_active')">
+                            <i class="fas fa-flag"></i></i> <p>Country</p>
+                        </a>
+                    </li>
+                    <li class="nav-item menu-open">
+                        <a href="{{url('/admin/currency')}}" class="nav-link @yield('currency_menu_active')">
+                            <i class="fas fa-dollar-sign"></i> <p>Currency</p>
+                        </a>
+                    </li>
                 </ul>
             </nav>
         <!-- /.sidebar-menu -->
