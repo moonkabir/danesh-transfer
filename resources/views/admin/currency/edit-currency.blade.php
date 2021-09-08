@@ -31,8 +31,9 @@
                                 <input type="file" class="form-control" name="flag" id="currency_flag">
                             </div>
                             <div class="form-group">
-                                <img id="currency_flag_img" src="{{ asset('assets/front-end/images/\/').$currency[0]->flag}}" width="200" alt="" />
+                                <img id="currency_flag_img" src="{{ asset('assets/admin/images/flag/\/').$currency[0]->flag}}" width="200" alt="" />
                             </div>
+                            <input type="hidden" value="assets/admin/images/flag/{{ $currency[0]->flag }}" name="old_currency_flag">
                         </div>
                         <div class="card-footer">
                             <button type="submit" class="btn btn-primary">Update</button>

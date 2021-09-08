@@ -47,11 +47,14 @@ class CurrencyController extends Controller
         if($request->file('flag')){
             $flag_image = $request->file('flag');
             $flag_image_name = time() . rand() . '.' . $flag_image->extension();
-            $flag_image->move(public_path("assets/admin/images/flag"), $flag_image_name);
+            $flag_upload = $flag_image->move(public_path("assets/admin/images/flag"), $flag_image_name);
+            if($flag_upload){
+                unlink(public_path($request->post('old_currency_flag')));
+            }
             DB::table('currency')->where('id', $id)->update([
                 'name' => $request->post('name'),
                 'code' => $request->post('code'),
-                'flag' => $flag_image_name
+                'flag' => $flag_image_name,
             ]);
         }else{
             DB::table('currency')->where('id', $id)->update([

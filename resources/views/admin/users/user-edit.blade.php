@@ -69,9 +69,8 @@
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Select ID type</label>
                                 <select name="id_type" id="id_type"class="form-control">
-                                    <option value="{{$user[0]->id_type}}">{{$user[0]->id_type}}</option>
-                                    <option value="aus_driver_lic">Australia Driver License</option>
-                                    <option value="passport">Passport</option>
+                                    <option {{$user[0]->id_type == "aus_driver_lic" ? 'selected' : ''}} value="aus_driver_lic">Australia Driver License</option>
+                                    <option {{$user[0]->id_type == "passport" ? 'selected' : ''}} value="passport">Passport</option>
                                 </select>
                             </div>
                             <div class="form-group">
