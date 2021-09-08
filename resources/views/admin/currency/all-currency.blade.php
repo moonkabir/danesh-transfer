@@ -39,7 +39,7 @@
                                         <td>{{$currency->name}}</td>
                                         <td>{{$currency->code}}</td>
                                         <td>
-                                            <img id="currency_flag_img" src="{{ asset('assets/front-end/images/\/').$currency->flag}}" width="50" alt=""/>
+                                            <img id="currency_flag_img" src="{{ asset('assets/admin/images/flag/\/').$currency->flag}}" width="50" alt=""/>
                                         </td>
                                         <td>
                                             <a href="currency-update/{{$currency->id}}"><i class="fas fa-edit"></i></a>&nbsp|

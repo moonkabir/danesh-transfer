@@ -39,9 +39,11 @@ class CurrencyController extends Controller
         // $flag_image = $request->file('flag');
         // $flag_image_name = time() . rand() . '.' . $flag_image->extension();
         // $flag_image->move(public_path("assets/front-end/images"), $flag_image_name);
-        $old_image = DB::table('currency')->where('id', $id)->get("flag");
-        echo($old_image->flag);
-        die();
+
+        // $old_image = DB::table('currency')->where('id', $id)->get("flag");
+        // echo($old_image->flag);
+        // die();
+        // return $request;
         if($request->file('flag')){
             $flag_image = $request->file('flag');
             $flag_image_name = time() . rand() . '.' . $flag_image->extension();
@@ -55,7 +57,6 @@ class CurrencyController extends Controller
             DB::table('currency')->where('id', $id)->update([
                 'name' => $request->post('name'),
                 'code' => $request->post('code'),
-                'flag' => $old_image->flag
             ]);
         }
         return redirect('/admin/currency')->with('message', 'Currency Updated Successfully');
